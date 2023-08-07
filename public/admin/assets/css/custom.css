@@ -1,0 +1,63 @@
+.customer-container {
+    margin: 36px 26px 400px 26px;
+}
+/* .customer-search{
+    max-width: 250px;
+} */
+.customer-card{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.pdf{
+    display: inline-block;
+}
+.search-form{
+    display: inline-block;
+}
+.table-invoice {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .table-invoice td, .table-invoice th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  .table-invoice tr:nth-child(even){background-color: #f2f2f2;}
+
+  .table-invoice tr:hover {background-color: #ddd;}
+
+  .table-invoice th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+.image-style {
+    width: 250px;
+    height: 150px;
+    border-radius: 10%;
+}
+.slideImg{
+    width: 60px;
+    height: 60px;
+    border-radius: 10%;
+}
+
+.mergin-right {
+	margin-left: 388px;
+}
+.background{
+    transition: 0.5s;
+}
+.background:hover {
+    background: #73398a!important;
+    color: #fff;
+}
+.background-menu-link:hover{
+    color: #fff!important;
+}

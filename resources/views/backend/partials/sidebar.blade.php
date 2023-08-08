@@ -54,7 +54,26 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-
+        {{--        Merchant start--}}
+        {{--End Merchant--}}
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="fa fa-light fa-person-military-pointing menu-icon"></i>
+                <div data-i18n="Account Settings">Merchant Panel</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item background">
+                    <a href="{{route('merchant')}}" class="menu-link background-menu-link">
+                        <div data-i18n="Account">Merchant</div>
+                    </a>
+                </li>
+                <li class="menu-item background">
+                    <a href="{{route('approve')}}" class="menu-link background-menu-link">
+                        <div data-i18n="Account">Approve By</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <!-- customer -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -69,6 +88,7 @@
                 </li>
             </ul>
         </li>
+{{--        End Customer--}}
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>

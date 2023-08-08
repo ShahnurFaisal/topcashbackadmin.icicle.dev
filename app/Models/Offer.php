@@ -16,4 +16,7 @@ class Offer extends Model
     public function subCategory(){
         return $this->belongsTo(SubCategory::class,'subCategory_id');
     }
+    public function merchant(){
+        return $this->hasMany(Merchant::class,'offer_id');
+    }
 }

@@ -21,7 +21,8 @@ use App\Http\Controllers\SubModuleController;
 use App\Http\Controllers\CreateAdminController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\QRCodeController;
-
+use App\Http\Controllers\MerchantController;
+use App\Http\Controllers\MerchantApproveController;
 
 
 
@@ -34,7 +35,17 @@ Route::get('/', function () {
 Route::group(['middleware'=>['authAdmin']],function (){
 
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
-
+    //Merchant Start
+    Route::get('/merchant',[MerchantController::class,'merchant'])->name('merchant');
+    Route::get('/edit-merchant/{id}',[MerchantController::class,'editMerchant'])->name('edit.merchant');
+    Route::post('/update-merchant',[MerchantController::class,'updateMerchant'])->name('update.merchant');
+    Route::get('/delete-merchant/{id}',[MerchantController::class,'deleteMerchant'])->name('delete.merchant');
+    Route::get('/add-merchant',[MerchantController::class,'addMerchant'])->name('add.merchant');
+    Route::post('/save-merchant',[MerchantController::class,'saveMerchant'])->name('save.merchant');
+    // Merchant End
+    // Merchant Approve By
+    Route::get('/approve',[MerchantApproveController::class,'showApprove'])->name('showApprove');
+    // Merchant Approve End
         // Customer
     route::get('/customer',[CustomerController::class,'customer'])->name('customer');
     route::get('/edit-customer/{id}',[CustomerController::class,'editCustomer'])->name('edit.customer');

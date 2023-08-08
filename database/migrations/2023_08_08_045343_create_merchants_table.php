@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('merchants', function (Blueprint $table) {
             $table->id();
             $table->string('merchant_name');
-            $table->string('description')->nullable();
             $table->string('merchant_email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('merchant_number');
             $table->string('merchant_password');
-            $table->string('merchant_confirm_password');
-            $table->string('cashback_percentage')->nullable();
+            $table->unsignedBigInteger('offer_id');
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
             $table->timestamps();
         });
     }

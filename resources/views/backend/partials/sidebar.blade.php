@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="menu-item background">
-                    <a href="{{route('approve')}}" class="menu-link background-menu-link">
+                    <a href="{{route('showApprove')}}" class="menu-link background-menu-link">
                         <div data-i18n="Account">Approve By</div>
                     </a>
                 </li>

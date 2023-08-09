@@ -48,12 +48,12 @@ class QRCodeController extends Controller
 
         //$userEmail = Auth::guard('admin')->user()->email;
 
- $userEmail =Auth::guard('admin')->user()->email;
- $userName =Auth::guard('admin')->user()->name;
+       $userEmail =Auth::guard('admin')->user()->email;
+       $userName =Auth::guard('admin')->user()->name;
        // Mail::to($userEmail)->send(new CashBackOfferQrCode());
        $png = $qrCodeImage;
-$png = base64_encode($png);
- $qr_image = "<img src='data:image/png;base64," . $png . "'>";
+       $png = base64_encode($png);
+       $qr_image = "<img src='data:image/png;base64," . $png . "'>";
 
         $pdf =PDF::loadView('build', [
             'qr_image' => $qr_image,
@@ -84,13 +84,7 @@ $png = base64_encode($png);
         return response()->json([
             'message'=>'Mail send with QR code Successfully'
         ]);
-      /*  return PDF::loadView('build', [
-            'qr_image' => $qr_image,
-
-        ])->setPaper(array(0,0,200,360))->stream('qr.pdf');*/
-
-
-       // return view('build',compact('qrCode'));
+      
     }
 
 }

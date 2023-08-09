@@ -43,27 +43,29 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th><strong>Offer Title</strong></th>
+                                <th><strong>User</strong></th>
                                 <th><strong>Offer QR Code</strong></th>
-                                {{-- <th>Approved Date</th> --}}
+                                <th><strong>QR_Code Created_at</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($offer as $offers)
+                            @foreach($qrCode as $offers)
                                <tr>
-                                   <td>{{$offers->offer_title}}</td>
-                                   @foreach ( $qrCode as $qrCodes)
+                                   <td>{{ $offers->admins->name }}</td>
+
                                    <td>
-                                    {!! DNS2D::getBarCodeHTML("$qrCodes->qr_code_data",'QRCODE',3, 3) !!}
-                                    P- {{ $qrCodes->qr_code_data }}
+                                    {!! DNS2D::getBarCodeHTML("$offers->qr_code_data",'QRCODE',3, 3) !!}
+                                    P- {{ $offers->qr_code_data }}
                                 </td>
-
-                                   @endforeach
-
-                                   {{-- <td>{{\carbon\carbon::create($offers->approved_date)->format('d-M-y')}}</td> --}}
-                                   <td><a class="btn btn-success" href="{{ route('approveOffer',[$offers->id,'approved']) }}">Approved</a></td>
-                                   {{-- <td><a class="btn btn-danger" href="{{ route('approvePhoto',[$offers->id,'declined']) }}">Denied</a></td> --}}
+                                   <td>{{\carbon\carbon::create($offers->created_at)->format('d-M-y')}}</td>
+                                   <td>
+                                    <a id="approveButton" class="btn btn-success {{ $offers->status == 'approved' ? 'approved' : '' }}"
+                                        href="{{ route('approveOffer', [$offers->id, 'approved']) }}">
+                                         {{ $offers->status == 'approved' ? 'Approved' : 'Approve' }}
+                                     </a>
+                                </td>
+                                   <td><a class="btn btn-danger" href="{{ route('approveOffer',[$offers->id,'declined']) }}">{{ $offers->status == 'declined' ? 'Declined' : 'Decline' }}</a></td>
                                </tr>
                             @endforeach
                             </tbody>
@@ -77,6 +79,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
             integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#approveButton').click(function() {
+            // Update button text to "Approved"
+            $(this).text('Approved');
+            // Add the 'approved' class to change its appearance
+            $(this).addClass('approved');
+        });
+    });
+    </script>
+
+
     <script type="text/javascript">
         $(document).ready(function() {
 

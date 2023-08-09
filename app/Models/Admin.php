@@ -15,4 +15,7 @@ class Admin extends Authenticatable
     public function qrcodes(){
         return $this->hasMany(QRCode::class,'admin_id');
         }
+        // public function offer(){
+        //     return $this->belongsTo(Offer::class,'subCategory_id');
+        // }
 }

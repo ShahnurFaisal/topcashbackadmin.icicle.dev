@@ -47,6 +47,9 @@ Route::group(['middleware'=>['authAdmin']],function (){
     Route::get('/approve',[MerchantApproveController::class,'showApprove'])->name('showApprove');
     Route::get('approve/{imageId}/{status}',[MerchantApproveController::class,'approveOffer'])->name('approveOffer');
     // Merchant Approve End
+    //Merchant Approve_update
+    Route::get('/approveUpdate',[MerchantApproveController::class,'showApproveUpdate'])->name('showApproveUpdate');
+    //Merchant Approve_update
         // Customer
     route::get('/customer',[CustomerController::class,'customer'])->name('customer');
     route::get('/edit-customer/{id}',[CustomerController::class,'editCustomer'])->name('edit.customer');

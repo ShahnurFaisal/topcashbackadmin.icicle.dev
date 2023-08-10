@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 
-@section('content')
-@extends('backend.layouts.app')
+
+
 @section('title')
     Merchant
 @endsection
@@ -55,7 +55,7 @@
                                    <td>{{ $offers->admins->name }}</td>
 
                                    <td>
-                                    {!! DNS2D::getBarCodeHTML("$offers->qr_code_data",'QRCODE',3, 3) !!}
+                                    {!! DNS2D::getBarCodeHTML("$offers->qr_code_data",'QRCODE',10, 10) !!}
                                     P- {{ $offers->qr_code_data }}
                                 </td>
                                    <td>{{\carbon\carbon::create($offers->created_at)->format('d-M-y')}}</td>
@@ -65,7 +65,9 @@
                                          {{ $offers->status == 'approved' ? 'Approved' : 'Approve' }}
                                      </a>
                                 </td>
-                                   <td><a class="btn btn-danger" href="{{ route('approveOffer',[$offers->id,'declined']) }}">{{ $offers->status == 'declined' ? 'Declined' : 'Decline' }}</a></td>
+                                   <td>
+                                    <a class="btn btn-danger" href="{{ route('approveOffer',[$offers->id,'declined']) }}">{{ $offers->status == 'declined' ? 'Declined' : 'Decline' }}</a>
+                                </td>
                                </tr>
                             @endforeach
                             </tbody>
@@ -104,10 +106,3 @@
         }
     </script>
 @endsection
-
-
-<div class="col-12">
-
-
-    {{-- {{$photos->links()}} --}}
-</div>

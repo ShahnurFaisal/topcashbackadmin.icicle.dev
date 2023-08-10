@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Merchant;
 use App\Models\Offer;
 use App\Models\QRCode;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,5 +37,11 @@ class MerchantApproveController extends Controller
       }else{
           return 'Invalid response';
       }
+    }
+    public function showApproveUpdate()
+    {
+        $qrCode = QRCode::with('admins')->get();
+        $user = User::latest()->get();
+        return view('backend.merchant.approved_update',compact('user','qrCode'));
     }
 }

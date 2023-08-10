@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\QRCode;
 use App\Mail\CashBackOfferQrCode;
+use App\Models\Offer;
 use Illuminate\Support\Facades\Mail;
 use PDF;
 use Illuminate\Support\Str;
@@ -32,8 +33,11 @@ class QRCodeController extends Controller
     public function generateAndSendQRCode(Request $request)
     {
         // Generate a random QR code data
+        $offerId = Offer::find('id');
+
         $randomString = Str::random(10);
-        $qrCodeData = 'Random QR code data: ' . $randomString;
+        $qrCodeData = 'Random QR code data: ' . $randomString .$offerId;
+
         $qrCodeImage = QrCodeGenerator::size(100)->generate($qrCodeData);
 
         // Get the authenticated user's email
@@ -57,6 +61,7 @@ class QRCodeController extends Controller
 
         $pdf =PDF::loadView('build', [
             'qr_image' => $qr_image,
+            'randomString' =>$randomString
 
         ])->setPaper(array(0,0,200,360));
 
@@ -84,7 +89,7 @@ class QRCodeController extends Controller
         return response()->json([
             'message'=>'Mail send with QR code Successfully'
         ]);
-      
+
     }
 
 }

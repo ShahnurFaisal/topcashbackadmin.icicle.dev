@@ -13,6 +13,7 @@
         <h2>This is your Offer's QR Code</h2>
 
         {!! $qr_image !!}
+        {!! $randomString !!}
     </div>
 </body>
 </html>

@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('user_email')->nullable();
             $table->boolean('sent_email')->default(False);
             $table->unsignedBigInteger('admin_id'); // Add the foreign key column
+            $table->unsignedBigInteger('approved_id')->nullable();
+            $table->foreign('approved_id')->references('id')->on('merchants')->onDelete('cascade');
+            $table->dateTime('approved_date')->nullable();
             $table->timestamps();
+            $table->enum('status',['pending','approved','declined'])->default('pending');
             // Define the foreign key relationship
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
         });

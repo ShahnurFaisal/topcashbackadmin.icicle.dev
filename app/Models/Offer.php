@@ -19,4 +19,8 @@ class Offer extends Model
     public function merchant(){
         return $this->hasMany(Merchant::class,'offer_id');
     }
+    // public function user(){
+    //     return $this->hasMany(Admin::class,'offer_id');
+    // }
+
 }

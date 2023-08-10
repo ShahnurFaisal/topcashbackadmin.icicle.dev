@@ -52,8 +52,9 @@ class QRCodeController extends Controller
 
         //$userEmail = Auth::guard('admin')->user()->email;
 
-       $userEmail =Auth::guard('admin')->user()->email;
-       $userName =Auth::guard('admin')->user()->name;
+        $userEmail =$request->email;
+
+        $userName =$request->name;
        // Mail::to($userEmail)->send(new CashBackOfferQrCode());
        $png = $qrCodeImage;
        $png = base64_encode($png);
@@ -83,10 +84,13 @@ class QRCodeController extends Controller
             'user_email' => $userEmail,
             'sent_email' => false, // Use false instead of False
             'admin_id' => $adminId,
+            'status' => 'approved',
+
         ]);
 
         $qrCode->update(['sent_email' => true]);
         return response()->json([
+            
             'message'=>'Mail send with QR code Successfully'
         ]);
 

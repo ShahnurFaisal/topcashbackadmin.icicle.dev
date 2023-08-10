@@ -46,7 +46,9 @@
                                 <th><strong>User</strong></th>
                                 <th><strong>Offer QR Code</strong></th>
                                 <th><strong>QR_Code Created_at</strong></th>
-                                <th><strong>Action</strong></th>
+
+                                <th><strong>Status</strong></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -58,16 +60,21 @@
                                     {!! DNS2D::getBarCodeHTML("$offers->qr_code_data",'QRCODE',10, 10) !!}
                                     P- {{ $offers->qr_code_data }}
                                 </td>
-                                   <td>{{\carbon\carbon::create($offers->created_at)->format('d-M-y')}}</td>
-                                   <td>
+                                <td>{{\carbon\carbon::create($offers->created_at)->format('d-M-y')}}</td>
+
+                                <td>
+                                    {{ $offers->status }}
+                                </td>
+                                   {{-- <td>
                                     <a id="approveButton" class="btn btn-success {{ $offers->status == 'approved' ? 'approved' : '' }}"
                                         href="{{ route('approveOffer', [$offers->id, 'approved']) }}">
                                          {{ $offers->status == 'approved' ? 'Approved' : 'Approve' }}
                                      </a>
+
                                 </td>
                                    <td>
                                     <a class="btn btn-danger" href="{{ route('approveOffer',[$offers->id,'declined']) }}">{{ $offers->status == 'declined' ? 'Declined' : 'Decline' }}</a>
-                                </td>
+                                </td> --}}
                                </tr>
                             @endforeach
                             </tbody>

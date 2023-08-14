@@ -44,10 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        // 'merchant' => [
-        //     'driver' => 'session',
-        //     'provider' => 'merchants',
-        // ],
+        'merchant' => [
+            'driver' => 'session',
+            'provider' => 'merchants',
+        ],
     ],
 
     /*
@@ -76,10 +76,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        // 'merchants' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\Merchant::class,
-        // ],
+        'merchants' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Merchant::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

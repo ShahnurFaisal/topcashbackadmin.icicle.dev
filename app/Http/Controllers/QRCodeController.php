@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\QRCode;
 use App\Mail\CashBackOfferQrCode;
+use App\Models\Offer;
 use Illuminate\Support\Facades\Mail;
 use PDF;
 use Illuminate\Support\Str;
@@ -32,8 +33,11 @@ class QRCodeController extends Controller
     public function generateAndSendQRCode(Request $request)
     {
         // Generate a random QR code data
+        $offerId = Offer::find('id');
+
         $randomString = Str::random(10);
-        $qrCodeData = 'Random QR code data: ' . $randomString;
+        $qrCodeData = 'Random QR code data: ' . $randomString .$offerId;
+
         $qrCodeImage = QrCodeGenerator::size(100)->generate($qrCodeData);
 
         // Get the authenticated user's email
@@ -48,15 +52,17 @@ class QRCodeController extends Controller
 
         //$userEmail = Auth::guard('admin')->user()->email;
 
- $userEmail =Auth::guard('admin')->user()->email;
- $userName =Auth::guard('admin')->user()->name;
+        $userEmail =$request->email;
+
+        $userName =$request->name;
        // Mail::to($userEmail)->send(new CashBackOfferQrCode());
        $png = $qrCodeImage;
-$png = base64_encode($png);
- $qr_image = "<img src='data:image/png;base64," . $png . "'>";
+       $png = base64_encode($png);
+       $qr_image = "<img src='data:image/png;base64," . $png . "'>";
 
         $pdf =PDF::loadView('build', [
             'qr_image' => $qr_image,
+            'randomString' =>$randomString
 
         ])->setPaper(array(0,0,200,360));
 
@@ -78,19 +84,16 @@ $png = base64_encode($png);
             'user_email' => $userEmail,
             'sent_email' => false, // Use false instead of False
             'admin_id' => $adminId,
+            'status' => 'approved',
+
         ]);
 
         $qrCode->update(['sent_email' => true]);
         return response()->json([
+            
             'message'=>'Mail send with QR code Successfully'
         ]);
-      /*  return PDF::loadView('build', [
-            'qr_image' => $qr_image,
 
-        ])->setPaper(array(0,0,200,360))->stream('qr.pdf');*/
-
-
-       // return view('build',compact('qrCode'));
     }
 
 }

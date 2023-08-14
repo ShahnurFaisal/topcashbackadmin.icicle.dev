@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\QRCode;
@@ -25,9 +26,13 @@ class QRCodeController extends Controller
 
         // Retrieve the authenticated user's previous QR codes
         $previousQRCodes = Auth::guard('admin')->user()->qrcodes;
-
+        $user = User::latest()->get();
         // Return the view with the necessary data
-        return view('backend.qrCode.qr_code_generator', ['previousQRCodes' => $previousQRCodes]);
+        return view('backend.qrCode.qr_code_generator',
+            [
+                'previousQRCodes' => $previousQRCodes,
+                'user'=>$user
+            ]);
 
     }
     public function generateAndSendQRCode(Request $request)
@@ -90,10 +95,12 @@ class QRCodeController extends Controller
 
         $qrCode->update(['sent_email' => true]);
         return response()->json([
-            
+
             'message'=>'Mail send with QR code Successfully'
         ]);
 
     }
+    // Online Generate QR code
+
 
 }

@@ -8,18 +8,26 @@
 
 
         <!-- QR code generator form -->
-        <form action="{{ route('generate_qr_code.post') }}" method="POST">
-            @csrf
-            <!-- Add any necessary form inputs here -->
 
-            <!-- Example: If you want the user to input a name -->
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required>
+        <table class="table">
+            <tr>
+                <th>Send QR Code</th>
+            </tr>
+            <tr>
+                <td>
+                    <form action="{{ route('generate_qr_code.post') }}" method="POST">
+                    @csrf
+                    <!-- Add any necessary form inputs here -->
+                    @foreach($user as $item)
+                        <!-- Example: If you want the user to input a name -->
+                            <input type="hidden" name="name" id="name" value="{{$item->name}}">
+                            <input type="hidden" name="email" id="email" value="{{$item->email}}">
 
-            <button type="submit">Generate QR Code</button>
-        </form>
-        <div class="div">
-
-        </div>
+                            <button class="btn btn-success" type="submit">Approve</button>
+                        @endforeach
+                    </form>
+                </td>
+            </tr>
+        </table>
     </div>
 @endsection

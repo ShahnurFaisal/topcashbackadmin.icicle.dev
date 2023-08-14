@@ -19,7 +19,7 @@ class MerchantApproveController extends Controller
 
         $qrCode = QRCode::with('admins')->get();
         //qr_Show
-        $previousQRCodes = Auth::guard('admin')->user()->qrcodes;
+//        $previousQRCodes = Auth::guard('admin')->user()->qrcodes;
 
         return view('backend.merchant.approved',compact('qrCode'));
     }

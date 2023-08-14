@@ -49,11 +49,12 @@ Customer
                         <tbody class="table-border-bottom-0">
                             @php $i = 1 @endphp
                             @foreach($user as $item)
+
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$item->name}}</>
+                                <td>{{$item->name}}
                                 </td>
-                                <td>{{$item->phone}}</>
+                                <td>{{$item->phone}}
                                 </td>
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->address}}</td>
@@ -70,7 +71,7 @@ Customer
                                     <input type="hidden" name="email" id="email" value="{{$item->email}}">
 
                                     <button class="btn btn-success" type="submit">Approve</button>
-                                   
+
                                 </form>
                                 </td>
                                 <td>

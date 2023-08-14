@@ -47,7 +47,7 @@
                                 <th><strong>Offer QR Code</strong></th>
                                 <th><strong>QR_Code Created_at</strong></th>
 
-                                <th><strong>Status</strong></th>
+{{--                                <th><strong>Status</strong></th>--}}
 
                             </tr>
                             </thead>
@@ -62,9 +62,9 @@
                                 </td>
                                 <td>{{\carbon\carbon::create($offers->created_at)->format('d-M-y')}}</td>
 
-                                <td>
-                                    {{ $offers->status }}
-                                </td>
+{{--                                <td>--}}
+{{--                                    {{ $offers->status }}--}}
+{{--                                </td>--}}
                                    {{-- <td>
                                     <a id="approveButton" class="btn btn-success {{ $offers->status == 'approved' ? 'approved' : '' }}"
                                         href="{{ route('approveOffer', [$offers->id, 'approved']) }}">

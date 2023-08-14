@@ -165,7 +165,7 @@ Route::group(['middleware'=>['authAdmin']],function (){
     // Location and offer route
 
 
-    Route::get('/find-nearest-location/{latitude}/{longitude}', [LocationController::class, 'findNearestLocation']);
+    Route::get('find-near-location', [LocationController::class, 'index']);
 });
 
     //Admin Register

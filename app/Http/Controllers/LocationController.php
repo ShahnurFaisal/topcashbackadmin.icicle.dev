@@ -5,20 +5,30 @@ namespace App\Http\Controllers;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class LocationController extends Controller
 {
     //
-    public function findNearestLocation($latitude, $longitude)
-    {
-        $nearestLocation = Location::selectRaw('id, ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance')
-            ->orderBy('distance', 'asc')
-            ->take(1)
-            ->get([$latitude, $longitude, $latitude]);
+    public function index(Request $request) {
 
+          $latitude = 37.7749; // Example latitude value
+        $longitude = -122.4194; // Example longitude value
 
-        $nearestLocationId = $nearestLocation->first()->id;
-        // You can do more with $nearestLocationId here or return it as a response.
+        // Define the radius within which to search for nearest offers
+        $radius = 10; // Kilometers
 
-        return response()->json(['nearest_location_id' => $nearestLocationId]);
+        $showResult = DB::table("users")
+            ->select("users.id"
+                ,DB::raw("55555 * acos(cos(radians(" . $latitude . "))
+                * cos(radians(users.lat))
+                * cos(radians(users.lon) - radians(" . $longitude . "))
+                + sin(radians(" .$latitude. "))
+                * sin(radians(users.lat))) AS distance"))
+                ->groupBy("users.id")
+                ->having("distance", "<=", $radius)
+                ->get();
+
+      dd($showResult);
     }
 }

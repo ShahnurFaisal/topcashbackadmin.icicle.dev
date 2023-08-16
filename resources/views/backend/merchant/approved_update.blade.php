@@ -58,14 +58,10 @@ Customer
                                 </td>
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->address}}</td>
-
-
-
                                 <td>
                                     <form action="{{ route('generate_qr_code.post') }}" method="POST">
                                     @csrf
                                     <!-- Add any necessary form inputs here -->
-
                                     <!-- Example: If you want the user to input a name -->
                                     <input type="hidden" name="name" id="name" value="{{$item->name}}">
                                     <input type="hidden" name="email" id="email" value="{{$item->email}}">
@@ -75,7 +71,19 @@ Customer
                                 </form>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" href="#">Decline</a>
+                                    <form action="{{ route('generate_qr_code.post') }}" method="POST">
+                                        @csrf
+                                        <!-- Add any necessary form inputs here -->
+
+                                        <!-- Example: If you want the user to input a name -->
+                                        <input type="hidden" name="name" id="name" value="{{$item->name}}">
+                                        <input type="hidden" name="email" id="email" value="{{$item->email}}">
+
+                                        <button class="btn btn-danger" type="submit">Decline</button>
+
+
+
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -99,5 +107,6 @@ function cssPrint() {
 
          print();
       }
+
 </script>
 @endsection

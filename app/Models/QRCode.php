@@ -15,5 +15,8 @@ class QRCode extends Model
     {
         return $this->belongsTo(Admin::class,'admin_id');
     }
+    public function user(){
+        return $this->hasMany(User::class);
+    }
 }
 

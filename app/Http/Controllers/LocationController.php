@@ -18,7 +18,7 @@ class LocationController extends Controller
 
         $nearestLocationId = $nearestLocation->first()->id;
         // You can do more with $nearestLocationId here or return it as a response.
-
+        dd($nearestLocationId);
         return response()->json(['nearest_location_id' => $nearestLocationId]);
     }
 }

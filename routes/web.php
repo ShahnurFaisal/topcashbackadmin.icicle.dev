@@ -93,7 +93,8 @@ Route::group(['middleware'=>['authAdmin']],function (){
     // //QR code
     Route::get('/generate_qr_code', [QRCodeController::class, 'showQRCodeGenerator'])->name('generate_qr_code');
     Route::post('/generate_qr_code', [QRCodeController::class, 'generateAndSendQRCode'])->name('generate_qr_code.post');
-
+    Route::post('/generate_qr_code_decline', [QRCodeController::class, 'generateAndSendDeclineQRCode'])->name('generate_qr_code_decline.post');
+    
     // Order Route
     Route::get('/order',[OrderController::class,'order'])->name('order');
     Route::get('/delete-order/{id}',[OrderController::class,'deleteOrder'])->name('delete.order');

@@ -170,7 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         App\Providers\PermissionsServiceProvider::class,
-      
+
     ])->toArray(),
 
     /*
@@ -190,6 +190,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'GoogleTranslate' => Stichoza\GoogleTranslate\GoogleTranslate::class
     ])->toArray(),
 
 ];

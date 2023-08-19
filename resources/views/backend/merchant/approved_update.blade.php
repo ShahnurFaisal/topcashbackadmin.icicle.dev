@@ -20,7 +20,7 @@ Customer
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-head customer-card m-5">
-                    <h1 class="">Customer Table</h1>
+                    <h1 class="">Approval Table</h1>
                     <div class="search">
                         <a href="{{route('csv.customer')}}" class="btn btn-primary pdf">CSV</a>
                         <a href="{{route('excel.customer')}}" class="btn btn-primary pdf">Excel</a>
@@ -71,7 +71,11 @@ Customer
                                 </form>
                                 </td>
                                 <td>
+<<<<<<< HEAD
+                                    <form action="{{ route('generate_qr_code_decline.post') }}" method="POST">
+=======
                                     <form action="{{ route('generate_qr_code.post') }}" method="POST">
+>>>>>>> 4d6d7bbd2e73f5d2b01e3b6e573d3e57bc283a23
                                         @csrf
                                         <!-- Add any necessary form inputs here -->
 
@@ -80,9 +84,12 @@ Customer
                                         <input type="hidden" name="email" id="email" value="{{$item->email}}">
 
                                         <button class="btn btn-danger" type="submit">Decline</button>
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 4d6d7bbd2e73f5d2b01e3b6e573d3e57bc283a23
                                     </form>
                                 </td>
                             </tr>

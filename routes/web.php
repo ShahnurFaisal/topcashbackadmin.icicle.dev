@@ -23,6 +23,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\MerchantApproveController;
+use App\Http\Controllers\LangController;
 
 
 
@@ -97,6 +98,7 @@ Route::group(['middleware'=>['authAdmin']],function (){
     // //QR code
     Route::get('/generate_qr_code', [QRCodeController::class, 'showQRCodeGenerator'])->name('generate_qr_code');
     Route::post('/generate_qr_code', [QRCodeController::class, 'generateAndSendQRCode'])->name('generate_qr_code.post');
+    Route::post('/generate_qr_code_decline', [QRCodeController::class, 'generateAndSendDeclineQRCode'])->name('generate_qr_code_decline.post');
 
     // Order Route
     Route::get('/order',[OrderController::class,'order'])->name('order');
@@ -169,7 +171,17 @@ Route::group(['middleware'=>['authAdmin']],function (){
     // Location and offer route
 
 
+
     Route::get('find-near-location', [LocationController::class, 'index']);
+
+    Route::get('/find-nearest-location/{latitude}/{longitude}', [LocationController::class, 'findNearestLocation']);
+    Route::get('find-places', [LocationController::class, 'index']);
+
+    // Language Route
+    Route::get('/lang-home', [LangController::class, 'index']);
+    Route::get('/lang-change', [LangController::class, 'change'])->name('changeLang');
+
+
 });
 
     //Admin Register

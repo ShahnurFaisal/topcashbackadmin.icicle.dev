@@ -75,16 +75,15 @@ Customer
                                 </form>
                                 </td>
                                 <td>
-                                    <form action="{{ route('generate_qr_code.post') }}" method="POST">
-                                    @csrf
-                                    <!-- Add any necessary form inputs here -->
+                                    <form action="{{ route('generate_qr_code_decline.post') }}" method="POST">
+                                        @csrf
+                                        <!-- Add any necessary form inputs here -->
 
                                         <!-- Example: If you want the user to input a name -->
                                         <input type="hidden" name="name" id="name" value="{{$item->name}}">
                                         <input type="hidden" name="email" id="email" value="{{$item->email}}">
 
                                         <button class="btn btn-danger" type="submit">Decline</button>
-
                                     </form>
                                 </td>
                             </tr>

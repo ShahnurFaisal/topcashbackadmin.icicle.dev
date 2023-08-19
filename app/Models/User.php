@@ -44,21 +44,7 @@ class User extends Authenticatable
     public function order(){
         return $this->hasMany(Order::class);
     }
-    // public static function getPermissionGroups(){
-
-    //     $permission_group = DB::table('permissions')
-    //         ->select('group_name')
-    //         ->groupBy('group_name')
-    //         ->get();
-    //     return $permission_group;
-    // }
-    // public function roles()
-    // {
-    //     return $this->belongsToMany(Role::class);
-
-    // }
-    // public function qrcodes(){
-    // return $this->hasMany(Qrcode::class);
-    // }
-
+    public function qrCode(){
+        return $this->belongsTo(QRCode::class,'status');
+    }
 }

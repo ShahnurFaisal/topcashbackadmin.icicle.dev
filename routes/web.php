@@ -90,7 +90,11 @@ Route::group(['middleware'=>['authAdmin']],function (){
     route::get('/edit-offer/{id}',[OfferController::class,'editOffer'])->name('edit.offer');
     route::post('/update-offer',[OfferController::class,'updateOffer'])->name('update.offer');
     route::get('/pdf-product',[OfferController::class,'pdfProduct'])->name('pdf.product');
+    //location
+    Route::get('/convert-address-to-coordinates', 'LocationsController@convertAddressToCoordinates');
+    Route::post('/find-nearest-offer', 'LocationsController@findNearestOffer');
 
+    //
     // //QR code
     Route::get('/generate_qr_code', [QRCodeController::class, 'showQRCodeGenerator'])->name('generate_qr_code');
     Route::post('/generate_qr_code', [QRCodeController::class, 'generateAndSendQRCode'])->name('generate_qr_code.post');

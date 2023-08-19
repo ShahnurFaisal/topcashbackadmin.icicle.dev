@@ -71,11 +71,11 @@ Customer
                                 </form>
                                 </td>
                                 <td>
-<<<<<<< HEAD
+
                                     <form action="{{ route('generate_qr_code_decline.post') }}" method="POST">
-=======
+
                                     <form action="{{ route('generate_qr_code.post') }}" method="POST">
->>>>>>> 4d6d7bbd2e73f5d2b01e3b6e573d3e57bc283a23
+
                                         @csrf
                                         <!-- Add any necessary form inputs here -->
 
@@ -84,12 +84,7 @@ Customer
                                         <input type="hidden" name="email" id="email" value="{{$item->email}}">
 
                                         <button class="btn btn-danger" type="submit">Decline</button>
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 4d6d7bbd2e73f5d2b01e3b6e573d3e57bc283a23
                                     </form>
                                 </td>
                             </tr>

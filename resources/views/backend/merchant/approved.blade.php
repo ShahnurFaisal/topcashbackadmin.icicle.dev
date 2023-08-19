@@ -54,7 +54,7 @@
                             <tbody>
                             @foreach($qrCode as $offers)
                                <tr>
-                                   <td>{{ $offers->admins->name }}</td>
+                                   <td>{{ $offers->users->name }}</td>
 
                                    <td>
                                     {!! DNS2D::getBarCodeHTML("$offers->qr_code_data",'QRCODE',3, 3) !!}

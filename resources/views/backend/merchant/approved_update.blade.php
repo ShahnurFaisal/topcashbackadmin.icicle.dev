@@ -20,7 +20,7 @@ Customer
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-head customer-card m-5">
-                    <h1 class="">Customer Table</h1>
+                    <h1 class="">Approval Table</h1>
                     <div class="search">
                         <a href="{{route('csv.customer')}}" class="btn btn-primary pdf">CSV</a>
                         <a href="{{route('excel.customer')}}" class="btn btn-primary pdf">Excel</a>

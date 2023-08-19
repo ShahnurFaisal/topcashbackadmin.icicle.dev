@@ -15,9 +15,9 @@
 <body>
     <div class="card">
         <h4>QR code Offer Decline</h4>
-       <p class="qr_p">We regret to inform you that the offer previously sent has been 
-        revoked due to unforeseen circumstances. We apologize for any 
-        inconvenience and remain available to address any questions or 
+        <p class="qr_p">We regret to inform you that the offer previously sent has been
+        revoked due to unforeseen circumstances. We apologize for any
+        inconvenience and remain available to address any questions or
         explore alternative solutions.</p>
 
     </div>

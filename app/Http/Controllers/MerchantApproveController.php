@@ -42,6 +42,7 @@ class MerchantApproveController extends Controller
     {
         $qrCode = QRCode::with('admins')->get();
         $user = User::latest()->get();
+
         return view('backend.merchant.approved_update',compact('user','qrCode'));
     }
 }

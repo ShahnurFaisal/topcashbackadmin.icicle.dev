@@ -100,7 +100,72 @@ class QRCodeController extends Controller
         ]);
 
     }
-    // Online Generate QR code
+
+    // Online Generate QR code Decline
+
+    public function generateAndSendDeclineQRCode(Request $request){
+         // Generate a random QR code data
+         $offerId = Offer::find('id');
+
+         $randomString = Str::random(10);
+         $qrCodeData = 'Random QR code data: ' . $randomString .$offerId;
+
+         $qrCodeImage = QrCodeGenerator::size(100)->generate($qrCodeData);
+
+         // Get the authenticated user's email
+         $userEmail = Auth::guard('admin')->user()->email;
+         $adminId = Auth::guard('admin')->user()->id;
+
+
+         $uniqueFilename = uniqid('qr_code_');
+         $qrCodeImagePath = public_path('qrcodes/'. $uniqueFilename.'.png');
+
+         file_put_contents($qrCodeImagePath, $qrCodeImage);
+
+         //$userEmail = Auth::guard('admin')->user()->email;
+
+         $userEmail =$request->email;
+
+         $userName =$request->name;
+        // Mail::to($userEmail)->send(new CashBackOfferQrCode());
+        $png = $qrCodeImage;
+        $png = base64_encode($png);
+        $qr_image = "<img src='data:image/png;base64," . $png . "'>";
+
+         $pdf =PDF::loadView('decline_build', [
+             'qr_image' => $qr_image,
+             'randomString' =>$randomString
+
+         ])->setPaper(array(0,0,200,360));
+
+
+         $data = ['name' =>$userName, 'email' =>$userEmail];
+
+         Mail::send('mail', $data, function ($message) use ($data,$pdf)
+         {
+             $message->from('admin@topcashbackadmin.icicle.dev','Admin');
+             $message->to($data['email'], $data['name'])
+
+                 ->subject('Cash Back Offer')
+                 ->attachData($pdf->output(), "Decline_qrCode.pdf");
+         });
+
+
+         $qrCode = QRCode::create([
+             'qr_code_data' => $qrCodeData,
+             'user_email' => $userEmail,
+             'sent_email' => false, // Use false instead of False
+             'admin_id' => $adminId,
+             'status' => 'approved',
+
+         ]);
+
+         $qrCode->update(['sent_email' => true]);
+         return response()->json([
+
+             'message'=>'QR code Decline Successfully'
+         ]);
+    }
 
 
 }

@@ -54,10 +54,10 @@
                             <tbody>
                             @foreach($qrCode as $offers)
                                <tr>
-                                   <td>{{ $offers->admins->name }}</td>
+                                   <td>{{ $offers->users->name }}</td>
 
                                    <td>
-                                    {!! DNS2D::getBarCodeHTML("$offers->qr_code_data",'QRCODE',10, 10) !!}
+                                    {!! DNS2D::getBarCodeHTML("$offers->qr_code_data",'QRCODE',3, 3) !!}
                                     P- {{ $offers->qr_code_data }}
                                 </td>
                                 <td>{{\carbon\carbon::create($offers->created_at)->format('d-M-y')}}</td>

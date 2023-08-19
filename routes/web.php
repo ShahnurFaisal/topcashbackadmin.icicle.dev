@@ -24,6 +24,7 @@ use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\MerchantApproveController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\CurrencyController;
 
 
 
@@ -181,6 +182,10 @@ Route::group(['middleware'=>['authAdmin']],function (){
     Route::get('/lang-home', [LangController::class, 'index']);
     Route::get('/lang-change', [LangController::class, 'change'])->name('changeLang');
 
+    //Currency Route
+    Route::resource('/currency', CurrencyController::class);
+
+    Route::post('/currency_status',[CurrencyController::class,'currencyStatus'])->name('currency.status');
 
 });
 

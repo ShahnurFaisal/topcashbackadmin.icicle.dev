@@ -191,6 +191,26 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="fa fa-circle-user menu-icon"></i>
+                <div data-i18n="Authentications">Currency Panel </div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{route('currency.index')}}" class="menu-link">
+                        <div data-i18n="Basic">All Currencies</div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{route('currency.create')}}" class="menu-link">
+                        <div data-i18n="Basic">Add Currency</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="fa-solid fa-gear menu-icon"></i>
                 <div data-i18n="Misc">Site Configuration</div>
             </a>
@@ -210,6 +230,7 @@
                         <div data-i18n="Under Maintenance">Banner</div>
                     </a>
                 </li>
+
             </ul>
         </li>
 

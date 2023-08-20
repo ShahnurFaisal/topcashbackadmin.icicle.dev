@@ -183,7 +183,14 @@ Route::group(['middleware'=>['authAdmin']],function (){
     Route::get('/lang-change', [LangController::class, 'change'])->name('changeLang');
 
     //Currency Route
-    Route::resource('/currency', CurrencyController::class);
+    Route::get('/currency',[CurrencyController::class,'index'])->name('currency');
+    Route::get('/add-currency',[CurrencyController::class,'addCurrency'])->name('add.currency');
+    Route::post('/store-currency',[CurrencyController::class,'storeCurrency'])->name('store.currency');
+    Route::get('/edit-currency/{id}',[CurrencyController::class,'editCurrency'])->name('edit.currency');
+    Route::get('/delete-currency/{id}',[CurrencyController::class,'deleteCurrency'])->name('delete.currency');
+    Route::post('/update-currency/{id}',[CurrencyController::class,'updateCurrency'])->name('update.currency');
+    Route::post('/currency-load',[CurrencyController::class,'loadCurrency'])->name('currency.load');
+
 
     Route::post('/currency_status',[CurrencyController::class,'currencyStatus'])->name('currency.status');
 

@@ -3,6 +3,7 @@ namespace App\Helper;
 
 use App\Models\Admin;
 use App\Models\Appointment;
+use App\Models\Currency;
 use App\Models\EmployeeSalary;
 use App\Models\Expense;
 use App\Models\Invoice;
@@ -75,6 +76,12 @@ if (!function_exists('random_code')) {
         }
         return false;
     }
-
-
+}
+class Helper{
+    //currency load
+    public static function currency_load(){
+        if(session()->has('system_default_currency_info')==false){
+            session()->put('system_default_currency_info',Currency::find(1));
+        }
+    }
 }

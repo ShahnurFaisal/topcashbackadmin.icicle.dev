@@ -196,14 +196,14 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{route('currency.index')}}" class="menu-link">
+                    <a href="{{route('currency')}}" class="menu-link">
                         <div data-i18n="Basic">All Currencies</div>
                     </a>
                 </li>
             </ul>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{route('currency.create')}}" class="menu-link">
+                    <a href="" class="menu-link">
                         <div data-i18n="Basic">Add Currency</div>
                     </a>
                 </li>

@@ -12,7 +12,7 @@
                             <h3>Currency List</h3>
                         </div>
                         <div class="search">
-                            <a href="{{ route('currency.create') }}" class="btn btn-primary" title="Add Category">
+                            <a href="{{ route('add.currency') }}" class="btn btn-primary" title="Add Category">
                                 <i class="fa-sharp fa-solid fa-list"></i>
                                 Add Currency</a>
                         </div>
@@ -45,8 +45,8 @@
                                 <td>{{ $lists->exchange_rate }}</td>
                                 <td>{{ $lists->status }}</td>
                                 <td>
-                                    <a href="{{ route('showEditAdmin',$lists->id) }}" title="Edit" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
-                                    <a href="{{ route('deleteAdmin',$lists->id) }}" title="Delete" class="btn btn-danger" onclick="return confirm('Are you sure delete this!')"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="{{ route('edit.currency',$lists->id) }}" title="Edit" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="{{ route('delete.currency',$lists->id) }}" title="Delete" class="btn btn-danger" onclick="return confirm('Are you sure delete this!')"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                             @endforeach

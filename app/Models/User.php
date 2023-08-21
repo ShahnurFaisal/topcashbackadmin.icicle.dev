@@ -47,4 +47,7 @@ class User extends Authenticatable
     public function qrCode(){
         return $this->belongsTo(QRCode::class,'status');
     }
+    public function financial(){
+        return $this->hasOne(Financial::class);
+    }
 }

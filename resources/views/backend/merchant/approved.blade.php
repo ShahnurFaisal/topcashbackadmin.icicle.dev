@@ -46,9 +46,7 @@
                                 <th><strong>User</strong></th>
                                 <th><strong>Offer QR Code</strong></th>
                                 <th><strong>QR_Code Created_at</strong></th>
-
-{{--                                <th><strong>Status</strong></th>--}}
-
+                                <th><strong>QR_Code expire_date</strong></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -61,6 +59,7 @@
                                     P- {{ $offers->qr_code_data }}
                                 </td>
                                 <td>{{\carbon\carbon::create($offers->created_at)->format('d-M-y')}}</td>
+                                <td>{{ $offers->expiry_date }}</td>
 
 {{--                                <td>--}}
 {{--                                    {{ $offers->status }}--}}

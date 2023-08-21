@@ -75,6 +75,7 @@ Offer
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $offer->links() }}
                 </div>
             </div>
         </div>

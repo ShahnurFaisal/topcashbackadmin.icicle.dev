@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     //index category
     public function category(){
-        $category = Category::latest()->get();
+        $category = Category::latest()->paginate(10);
         return view('backend.category.category',compact('category'));
     }
     // store category
@@ -23,7 +23,7 @@ class CategoryController extends Controller
         $category->save();
         return to_route('category')->with('message','Category Store Successfully');
     }
-    // delete category 
+    // delete category
     public function deleteCategory($id){
         $category = Category::find($id);
         $category->delete();

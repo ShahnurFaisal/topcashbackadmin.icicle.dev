@@ -11,7 +11,7 @@ class OrderController extends Controller
 {
     //order index
     public function order(){
-        $order = Order::latest()->get();
+        $order = Order::latest()->paginate(10);
         return view('backend.order.order',compact('order'));
     }
     // delete Order

@@ -10,7 +10,7 @@ use PDF;
 class InventoryController extends Controller
 {
     public function inventory(){
-        $inventory = Inventory::all();
+        $inventory = Inventory::latest()->paginate(10);
         return view('backend.inventory.inventory',compact('inventory'));
     }
     // add Inventory

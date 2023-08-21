@@ -77,6 +77,7 @@ Customer
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $user->links() }}
                 </div>
             </div>
         </div>
@@ -88,11 +89,11 @@ Customer
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    
-   
+
+
 });
 function cssPrint() {
-         
+
          print();
       }
 </script>

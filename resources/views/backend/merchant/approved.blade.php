@@ -78,6 +78,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $qrCode->links() }}
                     </div>
                 </div>
             </div>

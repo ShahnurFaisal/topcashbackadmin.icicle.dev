@@ -51,6 +51,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $inventory->links() }}
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ class MerchantController extends Controller
 {
     //merchant
     public function merchant(){
-        $merchant = Merchant::latest()->get();
+        $merchant = Merchant::latest()->paginate(10);
         return view('backend.merchant.merchant',compact('merchant'));
     }
     // edit merchant

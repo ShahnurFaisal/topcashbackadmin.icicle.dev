@@ -46,6 +46,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $subModule->links() }}
                     </div>
                 </div>
             </div>

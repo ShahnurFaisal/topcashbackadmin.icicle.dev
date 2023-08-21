@@ -44,6 +44,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $module->links() }}
                     </div>
                 </div>
             </div>

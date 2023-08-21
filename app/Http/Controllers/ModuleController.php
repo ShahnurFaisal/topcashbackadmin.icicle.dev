@@ -10,7 +10,7 @@ class ModuleController extends Controller
 {
     //module
     public function module(){
-        $module = Module::latest()->paginate();
+        $module = Module::latest()->paginate(10);
         return view('backend.module.module',compact('module'));
     }
     // add module

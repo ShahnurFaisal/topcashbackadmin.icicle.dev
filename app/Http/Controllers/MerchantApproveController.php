@@ -17,7 +17,7 @@ class MerchantApproveController extends Controller
         // $offerss=Offer::latest()->get();
     //    $qrCode = QRCode::latest()->get();
 
-        $qrCode = QRCode::with('admins')->get();
+        $qrCode = QRCode::with('admins')->paginate(10);
         //qr_Show
 //        $previousQRCodes = Auth::guard('admin')->user()->qrcodes;
 
@@ -41,7 +41,7 @@ class MerchantApproveController extends Controller
     public function showApproveUpdate()
     {
         $qrCode = QRCode::with('admins')->get();
-        $user = User::latest()->get();
+        $user = User::latest()->paginate(10);
 
         return view('backend.merchant.approved_update',compact('user','qrCode'));
     }

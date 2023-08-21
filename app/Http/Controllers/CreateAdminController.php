@@ -8,7 +8,7 @@ use App\Models\AdminCreate;
 class CreateAdminController extends Controller
 {
     public function adminList(){
-        $list=AdminCreate::get();
+        $list=AdminCreate::latest()->paginate(10);
         return view('backend.createAdmin.adminList',compact('list'));
     }
 

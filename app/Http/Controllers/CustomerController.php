@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class CustomerController extends Controller
 {
     public function customer(){
-        $user = User::latest()->get();
+        $user = User::latest()->paginate(10);
         return view('backend.customer.customer',compact('user'));
     }
     // customer edit
@@ -38,7 +38,7 @@ class CustomerController extends Controller
         $users->save();
         return to_route('customer')->with('message','Customer Update Successfully');
     }
-    //delete customer 
+    //delete customer
     public function deleteCustomer($id){
         $users = User::find($id);
         $users->delete();

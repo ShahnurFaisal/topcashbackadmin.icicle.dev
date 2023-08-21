@@ -55,6 +55,7 @@ Route::group(['middleware'=>['authAdmin']],function (){
         // Customer
     route::get('/customer',[CustomerController::class,'customer'])->name('customer');
     route::get('/edit-customer/{id}',[CustomerController::class,'editCustomer'])->name('edit.customer');
+    route::post('/store-customer',[CustomerController::class,'store'])->name('store.customer');
     route::post('/update-customer',[CustomerController::class,'updateCustomer'])->name('update.customer');
     route::get('/delete-customer/{id}',[CustomerController::class,'deleteCustomer'])->name('delete.customer');
     route::get('/pdf-customer',[CustomerController::class,'pdfCustomer'])->name('pdf.customer');

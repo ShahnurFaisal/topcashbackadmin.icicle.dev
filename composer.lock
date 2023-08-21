@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
+
     "content-hash": "5b63c132dba8c05249b037e51d26cac5",
-=======
+
     "content-hash": "3fdc76f04c1bd19240eb5ac690da069d",
->>>>>>> 4d6d7bbd2e73f5d2b01e3b6e573d3e57bc283a23
+
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1606,7 +1606,7 @@
             "time": "2021-10-07T12:57:01+00:00"
         },
         {
-<<<<<<< HEAD
+
             "name": "laravel/framework",
             "version": "v10.19.0",
             "source": {
@@ -1616,7 +1616,7 @@
             },
             "dist": {
                 "type": "zip",
-=======
+
             "name": "http-interop/http-factory-guzzle",
             "version": "1.2.0",
             "source": {
@@ -1733,7 +1733,6 @@
             },
             "dist": {
                 "type": "zip",
->>>>>>> 4d6d7bbd2e73f5d2b01e3b6e573d3e57bc283a23
                 "url": "https://api.github.com/repos/laravel/framework/zipball/b8557e4a708a1bd2bc8229bd53feecfa2ac1c6fb",
                 "reference": "b8557e4a708a1bd2bc8229bd53feecfa2ac1c6fb",
                 "shasum": ""

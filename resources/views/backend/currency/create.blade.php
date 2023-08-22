@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('title')
-    Add Currency
+
 @endsection
 @section('content')
     <div class="container customer-container">
@@ -9,12 +9,14 @@
                 <div class="card mb-3">
                     <div class="card-head m-5 customer-card">
                         <div class="left">
+
                             <h3>Currency Create</h3>
                         </div>
                         <div class="search">
                             <a href="{{ route('currency') }}" class="btn btn-primary" title="Add Category">
                                 <i class="fa-sharp fa-solid fa-list"></i>
                                 Currency List</a>
+
                         </div>
                     </div>
                 </div>

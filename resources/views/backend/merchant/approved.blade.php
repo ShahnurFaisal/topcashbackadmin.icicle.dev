@@ -46,7 +46,7 @@
                                 <th><strong>User</strong></th>
                                 <th><strong>Offer QR Code</strong></th>
                                 <th><strong>QR_Code Created_at</strong></th>
-                                <th><strong>QR_Code expire_date</strong></th>
+                                <th><strong>QR_Code expiry_date</strong></th>
                             </tr>
                             </thead>
                             <tbody>

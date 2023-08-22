@@ -49,15 +49,26 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'phone' => 'required',
+            'address' => 'required',
+            'password' => 'required',
+            'confirm_password' => 'required|same:password|min:7',
+            // 'roles' => 'required'
         ]);
+        User::create([
+            'name' =>request('name'),
+            'email' =>request('email'),
+            'phone' => request('phone'),
+            'address' => request('address'),
+            'password' =>bcrypt(request('password')),
+            // 'roles' =>
+        ])->financial()->create();
 
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        // $input = $request->all();
+        // $input['password'] = Hash::make($input['password']);
 
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        // $user = User::create($input)->financial()->create();
+        // $user->assignRole($request->input('roles'));
 
         return redirect()->route('users')
             ->with('success','User created successfully');

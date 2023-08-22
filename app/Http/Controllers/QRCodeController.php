@@ -12,6 +12,7 @@ use App\Models\Offer;
 use Illuminate\Support\Facades\Mail;
 use PDF;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 use SimpleSoftwareIO\QrCode\Facades\QrCode as QrCodeGenerator; // Use an alias for the QrCode facade
 
 class QRCodeController extends Controller
@@ -39,7 +40,7 @@ class QRCodeController extends Controller
     {
         // Generate a random QR code data
         $offerId = Offer::find('id');
-
+        $expiryDate = Carbon::now()->addDays(365);
         $randomString = Str::random(10);
         $qrCodeData = 'Random QR code data: ' . $randomString .$offerId;
 
@@ -90,6 +91,7 @@ class QRCodeController extends Controller
             'sent_email' => false, // Use false instead of False
             'admin_id' => $adminId,
             'status' => 'approved',
+            'expiry_date' => $expiryDate
 
         ]);
 

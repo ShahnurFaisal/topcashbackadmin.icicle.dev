@@ -4,11 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
 
     "content-hash": "5b63c132dba8c05249b037e51d26cac5",
 
     "content-hash": "3fdc76f04c1bd19240eb5ac690da069d",
 
+=======
+    "content-hash": "19e9bd54ced2b211e421e8bb72f7af1c",
+>>>>>>> 3dfe9f4d48bee3b72c70ec923964ffec29a829ec
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1606,6 +1610,7 @@
             "time": "2021-10-07T12:57:01+00:00"
         },
         {
+<<<<<<< HEAD
 
             "name": "laravel/framework",
             "version": "v10.19.0",
@@ -1617,6 +1622,8 @@
             "dist": {
                 "type": "zip",
 
+=======
+>>>>>>> 3dfe9f4d48bee3b72c70ec923964ffec29a829ec
             "name": "http-interop/http-factory-guzzle",
             "version": "1.2.0",
             "source": {

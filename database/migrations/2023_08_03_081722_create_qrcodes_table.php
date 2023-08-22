@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('qrcodes', function (Blueprint $table) {
             $table->id();
             $table->string('qr_code_data')->nullable();
+            $table->date('expiry_date')->nullable();
             $table->string('user_email')->nullable();
             $table->boolean('sent_email')->default(False);
             $table->unsignedBigInteger('admin_id'); // Add the foreign key column

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CurrencyController extends Controller
 {
@@ -20,7 +21,17 @@ class CurrencyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+     // status
+     public function currencyStatus(Request $request){
+        if($request->mode == 'true'){
+            DB::table('currencies')->where('id',$request->id)->update(['status'=>'active']);
+        }else{
+            DB::table('currencies')->where('id',$request->id)->update(['status'=>'inactive']);
+        }
+        return response()->json(['message'=>'Successfully Status Updated','status'=>true]);
+     }
+
+    public function addCurrency()
     {
         return view('backend.currency.create');
     }
@@ -28,9 +39,21 @@ class CurrencyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function storeCurrency(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+             'symbol' => 'required',
+            'code' => 'required',
+             'exchange_rate' => 'required',
+         ]);
+        $currency = new Currency();
+        $currency->name=$request->name;
+        $currency->symbol=$request->symbol;
+        $currency->code=$request->code;
+        $currency->exchange_rate=$request->exchange_rate;
+        $currency->save();
+        return redirect()->route('currency')->with('message','Successfully Currency Stored');
     }
 
     /**
@@ -44,24 +67,45 @@ class CurrencyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function editCurrency($id)
     {
-        //
+        $currency = Currency::find($id);
+        if($currency){
+            return view('backend.currency.edit',compact('currency'));
+        }else{
+            return back()->with('error','Data Not found');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateCurrency(Request $request,$id)
     {
-        //
-    }
+        $currency = Currency::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $this->validate($request,[
+                   'name' => 'required',
+                    'symbol' => 'required',
+                   'code' => 'required',
+                    'exchange_rate' => 'required',
+                ]);
+        $currency->name=$request->name;
+        $currency->symbol=$request->symbol;
+        $currency->code=$request->code;
+        $currency->exchange_rate=$request->exchange_rate;
+        $currency->save();
+        return redirect()->route('currency')->with('message','Successfully Currency Updated');
+
+        }
+        public function deleteCurrency(string $id)
+            {
+                Currency::find($id)->delete();
+                return back()->with('message','Currency deleted Successfully');
+            }
+
+        public function loadCurrency(Request $request){
+            dd($request->all());
+        }
+
     }
-}

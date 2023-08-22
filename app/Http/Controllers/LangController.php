@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use App\Models\Currency;
 
 class LangController extends Controller
 {
     //
     public function index()
     {
-        return view('backend.language.lang');
+        $currency = Currency::all();
+        return view('backend.language.lang',compact('currency'));
     }
 
 

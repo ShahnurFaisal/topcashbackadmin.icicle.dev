@@ -25,6 +25,7 @@ use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\MerchantApproveController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\CommissionController;
 
 
 
@@ -194,6 +195,11 @@ Route::group(['middleware'=>['authAdmin']],function (){
 
 
     Route::post('/currency_status',[CurrencyController::class,'currencyStatus'])->name('currency.status');
+
+
+    Route::get('/calculate-commission', [CommissionController::class, 'showCommission'])->name('showCommission');
+    Route::post('/calculate-commission', [CommissionController::class, 'calculateAndDistributeCommission'])->name('commission.calculate');
+
 
 });
 

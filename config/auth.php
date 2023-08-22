@@ -44,10 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'merchant' => [
-            'driver' => 'session',
-            'provider' => 'merchants',
-        ],
+        // 'merchant' => [
+        //     'driver' => 'session',
+        //     'provider' => 'merchants',
+        // ],
     ],
 
     /*

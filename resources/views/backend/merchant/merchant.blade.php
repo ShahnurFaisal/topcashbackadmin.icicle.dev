@@ -79,6 +79,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $merchant->links() }}
                     </div>
                 </div>
             </div>

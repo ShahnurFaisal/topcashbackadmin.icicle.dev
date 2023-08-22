@@ -60,6 +60,7 @@ Category
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $category->links() }}
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ class SubCategoryController extends Controller
     // index subcategory
     public function subCategory(){
         $category = Category::latest()->get();
-        $subCategory = SubCategory::latest()->get();
+        $subCategory = SubCategory::latest()->paginate(10);
         return view('backend.subCategory.sub-category',compact('category','subCategory'));
     }
     // store subcategory
@@ -30,9 +30,9 @@ class SubCategoryController extends Controller
     // edit sub category
     public function editSubCategory($id){
         $subCategory = SubCategory::find($id);
-        
+
     }
-    // delete sub category 
+    // delete sub category
     public function deleteSubCategory($id){
         $subCategory = SubCategory::find($id);
         $subCategory->delete();

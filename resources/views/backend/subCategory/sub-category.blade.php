@@ -63,6 +63,7 @@ Sub Category
                             @endforeach
                         </tbody>
                     </table>
+                    {{  $subCategory->links() }}
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ class OfferController extends Controller
 {
     public function offer()
     {
-        $offer = Offer::latest()->get();
+        $offer = Offer::latest()->paginate(10);
         return view('backend.offer.offer', compact('offer'));
     }
     // add product

@@ -12,9 +12,10 @@ class ApiController extends Controller
     //category
     public function category(){
         $category= Category::all();
+
         return response()->json($category,200);
     }
-    ///subcategory
+    //subcategory
     public function subCategory(){
         $subCategory= SubCategory::all();
         return response()->json($subCategory,200);

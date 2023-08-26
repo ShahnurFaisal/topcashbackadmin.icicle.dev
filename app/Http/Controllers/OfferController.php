@@ -11,6 +11,7 @@ use App\Models\Offer;
 use PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CashBackOfferQrCode;
+use App\Models\Merchant;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -29,7 +30,8 @@ class OfferController extends Controller
         $subCategory = SubCategory::latest()->get();
         $childCategory = ChildCategory::latest()->get();
         $offer = Offer::latest()->get();
-        return view('backend.offer.add-offer', compact('category', 'subCategory', 'childCategory', 'offer'));
+        $merchant = Merchant::latest()->get();
+        return view('backend.offer.add-offer', compact('category', 'subCategory', 'childCategory', 'offer','merchant'));
     }
     // store product
     public function saveOffer(Request $request)
@@ -54,6 +56,7 @@ class OfferController extends Controller
         $offer->offer_percentage = $request->offer_percentage;
         $offer->offer_description = $request->offer_description;
         $offer->affiliate_link = $request->affiliate_link;
+        $offer->merchant_id = $request->merchant_id;
         if ($request->file('offer_image')) {
             $offer->offer_image = $this->makeImage($request);
         }
@@ -120,6 +123,7 @@ class OfferController extends Controller
         $offer->offer_percentage = $request->offer_percentage;
         $offer->offer_description = $request->offer_description;
         $offer->affiliate_link = $request->affiliate_link;
+        $offer->merchant_id = $request->merchant_id;
         if ($request->file('offer_image')) {
             $offer->offer_image = $this->makeImage($request);
         }

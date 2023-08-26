@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Merchant;
 use App\Models\SubCategory;
 use App\Models\Offer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -24,6 +26,16 @@ class ApiController extends Controller
     public function offer(){
         $offer = Offer::all();
         return response()->json($offer,200);
+    }
+    //User
+    public function userRegister(){
+        $user = User::all();
+        return response()->json($user,200);
+    }
 
+    //Merchant
+    public function merchant(){
+        $merchant = Merchant::all();
+        return response()->json($merchant,200);
     }
 }

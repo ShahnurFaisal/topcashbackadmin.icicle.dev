@@ -23,7 +23,7 @@ Add Offer
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route('save.offer')}}" method="post" enctype="multipart/form-data">
+                    <form class="form_1" action="{{route('save.offer')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @include('error')
                         <div class="form-group">
@@ -42,14 +42,14 @@ Add Offer
                                 @endforeach
                             </select>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="childCategory_id">Child Category Name</label>
-                            <select id="childCategory_id" name="childCategory_id" class="form-control my-2">
-                                @foreach($childCategory as $item1)
-                                <option value="{{$item1->id}}">{{$item1->child_category_name}}</option>
+                        <div class="form-group">
+                            <label for="merchant_address">Merchant Address</label>
+                            <select id="merchant_address" name="merchant_id" class="form-control my-2">
+                                @foreach($merchant as $item1)
+                                <option value="{{$item1->id}}">{{$item1->address}}</option>
                                 @endforeach
                             </select>
-                        </div> --}}
+                        </div>
                         {{-- <div class="form-group">
                             <label for="product_name">O Name</label>
                             <input type="text" id="product_name" name="product_name" placeholder="Product Name"
@@ -80,6 +80,7 @@ Add Offer
                             <label for="affiliate_link">Affiliate Link</label>
                             <input type="text" id="affiliate_link" name="affiliate_link" class="form-control my-2">
                         </div>
+
                         <div class="form-group">
                             <input type="submit" value="Save Offer" class=" my-2 btn btn-info">
                         </div>
@@ -93,3 +94,4 @@ Add Offer
 
 
 @endsection
+

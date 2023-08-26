@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="col-lg-8">
-                            <form action="{{route('save.merchant')}}" method="post" enctype="multipart/form-data">
+                            <form class="form_1" action="{{route('save.merchant')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name"><strong>Merchant Name</strong></label>
@@ -37,17 +37,23 @@
                                     <input type="email" id="email" name="merchant_email"  placeholder="Enter Merchant Email" class="form-control my-2">
                                 </div>
                                 <div class="form-group">
+                                    <label for="address"><strong>Merchant Address</strong></label>
+                                    <input type="text" id="address" name="address"  placeholder="Enter Merchant Address" class="form-control my-2">
+                                </div>
+                                <div class="form-group">
                                     <label for="password"><strong>Merchant Password</strong></label>
                                     <input type="password" id="password" name="merchant_password"  placeholder="Enter Merchant Password" class="form-control my-2">
                                 </div>
                                 <div class="form-group">
                                     <label for="company_name"><strong>Company Name</strong></label>
-                                    <select name="offer_id" id="company_name" class="form-control my-2">
-                                        <option value="">Choose Company Name</option>
-                                        @foreach($offer as $item)
-                                            <option value="{{$item->id}}">{{$item->offer_title}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" id="company_name" name="company_name"  placeholder="Enter Merchant Address" class="form-control my-2">
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" id="Latitude" name="latitude" class="form-control my-2">
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" id="Longitude" name="longitude" class="form-control my-2">
                                 </div>
                                 <input type="submit" value="Submit" class="btn btn-primary">
                             </form>
@@ -59,4 +65,51 @@
     </div>
 
 @endsection
+@push('js')
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("address");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const address = document.getElementById("address").value;
+
+            const geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode({ address: address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    const latitude = results[0].geometry.location.lat();
+                    const longitude = results[0].geometry.location.lng();
+
+                    console.log("Latitude: " + latitude);
+                    console.log("Longitude: " + longitude);
+                } else {
+                    console.log("Geocode was not successful for the following reason: " + status);
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        document.querySelector('.form_1 input[name="latitude"]').value = position.coords.latitude;
+        document.querySelector('.form_1 input[name="longitude"]').value = position.coords.longitude;
+    }
+</script>
+
+
+@endpush
 

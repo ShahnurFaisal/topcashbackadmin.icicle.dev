@@ -10,7 +10,7 @@ class Merchant extends Model
     use HasFactory;
     protected $guarded = [];
     public function offer(){
-        return $this->belongsTo(Offer::class,'offer_id');
+        return $this->hasMany(Offer::class);
     }
     public function financial(){
         return $this->hasMany(Financial::class);

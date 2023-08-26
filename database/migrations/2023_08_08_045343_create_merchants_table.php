@@ -19,8 +19,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('merchant_number');
             $table->string('merchant_password');
-            $table->unsignedBigInteger('offer_id');
-            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
+            $table->string('company_name');
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();
         });
     }

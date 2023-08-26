@@ -17,7 +17,7 @@ class Offer extends Model
         return $this->belongsTo(SubCategory::class,'subCategory_id');
     }
     public function merchant(){
-        return $this->hasMany(Merchant::class,'offer_id');
+        return $this->belongsTo(Merchant::class,'merchant_id');
     }
     // public function user(){
     //     return $this->hasMany(Admin::class,'offer_id');

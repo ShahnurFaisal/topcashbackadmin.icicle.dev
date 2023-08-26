@@ -47,6 +47,7 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
+                                <th>Address</th>
                                 <th>Company Name</th>
                                 <th>Actions</th>
                             </tr>
@@ -59,7 +60,8 @@
                                     <td>{{$item->merchant_name}} </td>
                                     <td>{{$item->merchant_number}}</td>
                                     <td>{{$item->merchant_email}}</td>
-                                    <td>{{$item->offer->offer_title}}</td>
+                                    <td>{{$item->address}}</td>
+                                    <td>{{$item->company_name}}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

@@ -36,6 +36,7 @@ Offer
                                 <th>Affiliate Link</th>
                                 <th>Offer Image</th>
                                 <th>Offer Description</th>
+                                
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -55,6 +56,7 @@ Offer
                                         alt="">
                                 </td>
                                 <td>{{Str::limit($offers->offer_description,12)}}</td>
+
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

@@ -28,7 +28,8 @@ return new class extends Migration
             $table->foreign('subCategory_id')->references('id')->on('sub_categories')->onDelete('cascade');
             $table->unsignedBigInteger('qr_code_id')->nullable();
             $table->foreign('qr_code_id')->references('id')->on('qrcodes')->onDelete('cascade');
-
+            $table->unsignedBigInteger('merchant_id')->nullable();
+            $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
 
             $table->timestamps();
         });

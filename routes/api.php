@@ -21,4 +21,6 @@ use App\Http\Controllers\ApiController;
 Route::get('/category',[ApiController::class,'category']);
 Route::get('/subCategory',[ApiController::class,'subCategory']);
 Route::get('/offer',[ApiController::class,'offer']);
+Route::get('/user',[ApiController::class,'userRegister']);
+Route::get('/merchant',[ApiController::class,'merchant']);
 

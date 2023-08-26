@@ -23,7 +23,7 @@
                             <input type="hidden" name="name" id="name" value="{{$item->name}}">
                             <input type="hidden" name="email" id="email" value="{{$item->email}}">
 
-                            <button class="btn btn-success" type="submit">Approve</button>
+                            <button class="btn btn-success" type="submit">Get Cash Bck</button>
                         @endforeach
                     </form>
                 </td>

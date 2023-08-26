@@ -11,7 +11,7 @@ class ApiController extends Controller
 {
     //category
     public function category(){
-        $category= Category::all();
+        $category= Category::select('id','category_name')->with('subCategory')->get();
         return response()->json($category,200);
     }
     ///subcategory

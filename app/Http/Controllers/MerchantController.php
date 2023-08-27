@@ -58,41 +58,7 @@ class MerchantController extends Controller
             'company_name' =>'required',
             'merchant_password' => 'required'
         ]);
-        // $geocodeResponse ="AIzaSyCvHVy94prufBugVVNeUPnxOeHFnZXwT1o";
-
-        // $geocodeResponseArray = json_decode($geocodeResponse, true); // Perform geocoding using a service like Google Maps API
-
-        // if ($geocodeResponse['status'] === 'OK') {
-        //     $latitude = $geocodeResponse['results'][0]['geometry']['location']['lat'];
-        //     $longitude = $geocodeResponse['results'][0]['geometry']['location']['lng'];
-        // } else {
-        //     $latitude = null;
-        //     $longitude = null;
-        // }
-        // try {
-        //     $address = $request->address;
-        //     $result = app('geocoder')->geocode($address)->get();
-
-        //     $lat = null;
-        //     $long = null;
-
-        //     if (!empty($result)) {
-        //         if (isset($result[0])) {
-        //             $coordinates = $result[0]->getCoordinates();
-        //             $lat = $coordinates->getLatitude();
-        //             $long = $coordinates->getLongitude();
-        //         } else {
-        //             echo "error: No result found";
-        //         }
-        //     } else {
-        //         echo "error: Empty geocoding result";
-        //     }
-
-        //     // Rest of the code to save the merchant data
-        // } catch (\Exception $e) {
-        //     echo "Geocoding error: " . $e->getMessage();
-        // }
-
+       
         $merchant=Merchant::create([
             'merchant_name' =>\request('merchant_name'),
             'merchant_number' =>\request('merchant_number'),

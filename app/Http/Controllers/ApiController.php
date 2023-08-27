@@ -24,7 +24,11 @@ class ApiController extends Controller
     }
     //offer
     public function offer(){
-        $offer = Offer::all();
+        // $offer = Offer::all();
+        // return response()->json($offer,200);
+        $offer= Offer::select('id','category_id','subCategory_id',
+        'offer_title','offer_amount','offer_percentage','offer_description',
+        'affiliate_link','merchant_id','offer_image')->with('merchant','category','subCategory')->get();
         return response()->json($offer,200);
     }
     //User

@@ -30,7 +30,8 @@ return new class extends Migration
             $table->foreign('qr_code_id')->references('id')->on('qrcodes')->onDelete('cascade');
             $table->unsignedBigInteger('merchant_id')->nullable();
             $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
-
+            $table->unsignedBigInteger('brand_name')->nullable();
+            $table->foreign('brand_name')->references('id')->on('merchants')->onDelete('cascade');
             $table->timestamps();
         });
     }

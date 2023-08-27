@@ -50,6 +50,14 @@ Add Offer
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="brand_name">Brand Name</label>
+                            <select id="brand_name" name="brand_name" class="form-control my-2">
+                                @foreach($merchant as $item1)
+                                <option value="{{$item1->id}}">{{$item1->company_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         {{-- <div class="form-group">
                             <label for="product_name">O Name</label>
                             <input type="text" id="product_name" name="product_name" placeholder="Product Name"

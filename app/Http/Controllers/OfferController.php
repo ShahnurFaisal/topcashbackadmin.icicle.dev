@@ -45,6 +45,7 @@ class OfferController extends Controller
             'offer_description' => 'required',
             'offer_image' => 'required|mimes:jpeg,jpg,png,gif',
             'affiliate_link' => 'required',
+            'brand_name' => 'required'
 
         ]);
         $offer = new Offer();
@@ -57,6 +58,7 @@ class OfferController extends Controller
         $offer->offer_description = $request->offer_description;
         $offer->affiliate_link = $request->affiliate_link;
         $offer->merchant_id = $request->merchant_id;
+        $offer->brand_name = $request->brand_name;
         if ($request->file('offer_image')) {
             $offer->offer_image = $this->makeImage($request);
         }
@@ -114,6 +116,8 @@ class OfferController extends Controller
             'offer_description' => 'required',
             'offer_image' => 'required|mimes:jpeg,jpg,png,gif',
             'affiliate_link' => 'required',
+            'brand_name' => 'required',
+
 
         ]);
         $offer->category_id = $request->category_id;
@@ -124,6 +128,7 @@ class OfferController extends Controller
         $offer->offer_description = $request->offer_description;
         $offer->affiliate_link = $request->affiliate_link;
         $offer->merchant_id = $request->merchant_id;
+        $offer->brand_name = $request->brand_name;
         if ($request->file('offer_image')) {
             $offer->offer_image = $this->makeImage($request);
         }
